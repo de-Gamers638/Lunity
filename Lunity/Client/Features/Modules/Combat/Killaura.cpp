@@ -76,7 +76,7 @@ vois Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
         LocalPlayer* lPlayer = ci->clientPlayer;
         if(player) {
                if(target != null) {
-                     Gamemode* GM = event.getGameMode();
+                     Gamemode* GM = event.GetGameMode();
                      if(GM != null) {
                           if(event.isLocalPlayer) {
                               GM->attack(theTarget);
