@@ -75,7 +75,7 @@ void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
         ClientInstance* ci = Utils::getClientInstance();
         LocalPlayer* lPlayer = ci->clientPlayer;
         if(lPlayer) {
-               if(theTarget != null) {
+               if(theTarget != nullptr) {
                      Gamemode* GM = event.GetGameMode();
                      if(GM != null) {
                           if(event.isLocalPlayer) {
