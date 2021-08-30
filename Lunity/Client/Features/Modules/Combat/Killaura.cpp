@@ -71,7 +71,7 @@ Vector2<float> CalcAngle(Vector3<float> localPos, Vector3<float> targetPos)
 float distance = 0;
 Actor* theTarget = nullptr;
 
-vois Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
+void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
         ClientInstance* ci = Utils::getClientInstance();
         LocalPlayer* lPlayer = ci->clientPlayer;
         if(player) {
