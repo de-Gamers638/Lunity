@@ -1,7 +1,15 @@
 #include  "NormalTickHook.h"
 
-void __fastcall NormalTickHook::NormalTickHookCallback_1_17_11_1(Player* localPlayer) {
-	PLH::FnCast(funcOriginal, &NormalTickHookCallback_1_17_11_1)(localPlayer);
+#include "../../Events/PlayerTickEvent.h"
+#include "../../Events/EventHandler.h"
+
+void __fastcall NormalTickHook::NormalTickHookCallback_1_17_11_1(Player* player) {
+	PlayerTickEvent event(player->gameMode, player, player == Utils::GetClientInstance()->clientPlayer);
+	auto listeners = EventHandler::getListeners();
+	for(auto listener : listeners) {
+		listener->onPlayerTickEvent(event);
+	}
+	PLH::FnCast(funcOriginal, &NormalTickHookCallback_1_17_11_1)(player);
 }
 
 NormalTickHook::NormalTickHook() : IPatch::IPatch("Player::NormalTick") {

@@ -138,7 +138,16 @@
 	{
 		"ClassName": "Player",
 		"Extends": "Mob",
-		"Fields": [],
+		"Fields": [
+			{
+				"Name": "gameMode",
+				"Offset": "12E8",
+				"Type":{
+					"TypeName": "class GameMode*",
+					"TypeSize": 8
+				}
+			}
+		],
 		"Functions": [],
 		"Virtuals": []
 	},
