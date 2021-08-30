@@ -82,6 +82,7 @@ void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
 						GM->attack(theTarget);
 					}
 				}
+				
 			}
 		}
 	}
