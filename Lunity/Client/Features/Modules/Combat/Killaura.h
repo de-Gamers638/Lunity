@@ -13,6 +13,7 @@ public:
 
 	void onActorRotateEvent(ActorRotateEvent& event) override;
 	void onRenderEvent(RenderEvent& event) override;
+        void onPlayerTickEvent(PlayerTickEvent& event) override;
 };
 
 
