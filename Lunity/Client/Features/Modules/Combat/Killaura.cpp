@@ -72,13 +72,12 @@ float distance = 0;
 Actor* theTarget = nullptr;
 
 void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
-	ClientInstance* ci = Utils::GetClientInstance();
-	LocalPlayer* lPlayer = ci->clientPlayer;
-	if(lPlayer != nullptr) {
-		if(theTarget != nullptr) {
-			GameMode* GM = event.GetGameMode();
-			if(GM != nullptr) {
-				if(event.IsLocalPlayer()) {
+	if(event.IsLocalPlayer()) {
+		LocalPlayer* lPlayer = (LocalPlayer*)event.GetPlayer();
+		if(lPlayer != nullptr) {
+			if(theTarget != nullptr) {
+				GameMode* GM = event.GetGameMode();
+				if(GM != nullptr) {
 					if(getDistance(lPlayer, theTarget) <= reachVal) {
 						GM->attack(theTarget);
 					}
@@ -86,7 +85,6 @@ void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
 			}
 		}
 	}
-
 }
 
 void Killaura::onActorRotateEvent(ActorRotateEvent& event) {
