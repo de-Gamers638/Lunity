@@ -73,7 +73,7 @@ Actor* theTarget = nullptr;
 
 vois Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
         ClientInstance* ci = Utils::getClientInstance();
-        LocalPlayer* lPlayer = client->clientPlayer;
+        LocalPlayer* lPlayer = ci->clientPlayer;
         if(player) {
                if(target != null) {
                      Gamemode* GM = event.getGameMode();
