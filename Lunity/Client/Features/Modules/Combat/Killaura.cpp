@@ -6,6 +6,7 @@
 float reachVal = 4;
 float minimumReach = 0;
 float maximumReach = 8;
+int interval = 3;
 
 auto getDistance(Actor* first, Actor* second) -> float {
 	return first->getPos()->DistanceTo(*second->getPos());
@@ -70,6 +71,7 @@ Vector2<float> CalcAngle(Vector3<float> localPos, Vector3<float> targetPos)
 
 float distance = 0;
 Actor* theTarget = nullptr;
+int delay = 0;
 
 void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
 	if(event.IsLocalPlayer()) {
@@ -79,7 +81,11 @@ void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
 				GameMode* GM = event.GetGameMode();
 				if(GM != nullptr) {
 					if(getDistance(lPlayer, theTarget) <= reachVal) {
-						GM->attack(theTarget);
+                                                delay++;
+                                                if(delay == interval) {
+						     GM->attack(theTarget);
+                                                     delay = 0;
+                                                }
 					}
 				}
 				
@@ -140,6 +146,7 @@ void Killaura::onRenderEvent(RenderEvent& event) {
 
 Killaura::Killaura() : Module("Killaura") {
 	this->addItem(new Setting("Reach", SettingType::SLIDER, &reachVal, &minimumReach, &maximumReach));
+        this->addItem(new Setting("Interval", SettingType::SLIDER, &interval, 0, 10));
 };
 
 void Killaura::OnEnable() {
