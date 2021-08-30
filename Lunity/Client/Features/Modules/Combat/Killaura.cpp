@@ -76,13 +76,12 @@ void Killaura::onPlayerTickEvent(PlayerTickEvent& event) {
 	LocalPlayer* lPlayer = ci->clientPlayer;
 	if(lPlayer != nullptr) {
 		if(theTarget != nullptr) {
-			GameMode* GM = event.GetGameMode();
+			GameMode* GM = lPlayer.gameMode;
 			if(GM != nullptr) {
-				if(event.IsLocalPlayer()) {
-					if(getDistance(lPlayer, theTarget) <= reachVal) {
-						GM->attack(theTarget);
-					}
+		              if(getDistance(lPlayer, theTarget) <= reachVal) {
+					GM->attack(theTarget);
 				}
+				
 			}
 		}
 	}
